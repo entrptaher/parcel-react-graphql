@@ -7,8 +7,8 @@ import { withApollo } from "react-apollo";
 const { importSchema } = require('graphql-import');
 
 import { print } from "graphql/language/printer";
-import fragments from "./fragments.graphql";
-import queries from "./query.graphql";
+import fragments from "../graphql/fragments.graphql";
+import queries from "../graphql/query.graphql";
 
 class App extends React.Component {
   componentDidMount() {

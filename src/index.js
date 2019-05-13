@@ -6,7 +6,7 @@ import { ApolloClient } from "apollo-client";
 import { createHttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 
-import App from './App';
+import App from './Components/App';
 
 const httpLink = createHttpLink({
   uri: "http://localhost:4000"

@@ -5,3 +5,9 @@ query posts {
     ...Post
   }
 }
+
+query contents {
+  content {
+    ...PostDeepNesting
+  }
+}

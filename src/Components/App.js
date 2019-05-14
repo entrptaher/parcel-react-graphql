@@ -1,36 +1,44 @@
 import React from "react";
-import ReactDOM from "react-dom";
-
-import gql from "graphql-tag";
 import { withApollo } from "react-apollo";
 
+import gql from "graphql-tag";
 const { importSchema } = require("graphql-import");
-
 import { print } from "graphql/language/printer";
 import fragments from "../graphql/fragments.graphql";
-import queries from "../graphql/query.graphql";
-import filterUnusedFragments from '../utils/filter-unused-fragments';
 
-console.log(print(filterUnusedFragments(fragments, "Post")))
-console.log(print(filterUnusedFragments(fragments, "Content")))
-console.log(print(filterUnusedFragments(queries, "posts")))
-console.log(print(filterUnusedFragments(queries, "contents")))
+import queries from "../graphql/query.graphql";
+import filterUnusedFragments from "../utils/filter-unused-fragments";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: []
+    };
+  }
   componentDidMount() {
-    // this.getPosts();
+    this.getPosts();
   }
   async getPosts() {
     const result = await this.props.client.query({
-      query: queries
+      query: filterUnusedFragments(queries, "posts")
     });
-    console.log({ result });
+    this.setState({ posts: result.data.posts });
   }
 
   render() {
     return (
       <div className="App">
-        <h1 className="App-Title">Hello Parcel x React</h1>
+        <h1 className="App-Title">Posts</h1>
+        <ul>
+          {this.state.posts.map(post => {
+            return (
+              <li key={post.id}>
+                {post.title} by {post.user.name}
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }

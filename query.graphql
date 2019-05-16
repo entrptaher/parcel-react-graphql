@@ -1,0 +1,35 @@
+query contents {
+  content {
+    ...PostDeepNesting
+  }
+}
+
+fragment PostDeepNesting on Post {
+  id
+  user {
+    ...UserDeepNesting
+  }
+  content {
+    ...ContentDeepNesting
+  }
+}
+
+fragment UserDeepNesting on User {
+  id
+  name
+  email
+  password
+  posts {
+    ...PostDeepNesting
+  }
+  content {
+    ...ContentDeepNesting
+  }
+}
+
+fragment ContentDeepNesting on Content {
+  id
+  user {
+    ...UserDeepNesting
+  }
+}

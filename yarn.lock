@@ -2730,6 +2730,14 @@ grapheme-breaker@^0.3.2:
     brfs "^1.2.0"
     unicode-trie "^0.3.1"
 
+graphql-anywhere@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-4.2.1.tgz#1f7c3a3d9004dbe81b1c553d7fd1ef2e16e14a85"
+  integrity sha512-4zlzTFzixGXtIYjX7BiXQOGhQ5yQVohj/EKNxUHUTAR7lHnCmrXU17gGtZ+108l9TkoHNfc33ieJ9U8trnHE1w==
+  dependencies:
+    apollo-utilities "^1.2.1"
+    tslib "^1.9.3"
+
 graphql-import@^0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.7.1.tgz#4add8d91a5f752d764b0a4a7a461fcd93136f223"

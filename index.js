@@ -134,7 +134,24 @@ function makeQueryInline(q, contents) {
         const deepestSelections = query[i].selectionSet.selections;
         for (let i = 0; i < deepestSelections.length; i++) {
           if(deepestSelections[i].selectionSet !== undefined) {
-            console.log(deepestSelections[i].selectionSet.selections[0].selections);
+            const deepestElements = deepestSelections[i].selectionSet.selections[0].selections;
+            console.log(deepestSelections[i].selectionSet)
+            for (let i = 0; i < deepestElements.length; i++) {
+              if (deepestElements[i].selectionSet !== undefined) {
+                let deeperFragment = deepestElements[i].selectionSet.selections;
+                console.log(deeperFragment);
+                const sprededElement = deepestElements[i].selectionSet.selections[0].name.value;
+                for (let i = 0; i < definitions.length; i++) {
+                  if (definitions[i].name.value == sprededElement) {
+                    const deepestField = definitions[i].selectionSet.selections;
+                    console.log(deepestField);
+                    deeperFragment[0] = deepestField;
+                  }
+                  
+                }
+              }
+              
+            }
           }
           
         }
@@ -142,7 +159,7 @@ function makeQueryInline(q, contents) {
       
     }
   }
-  //definitions.length = 1;
+  definitions.length = 1;
 }
 console.log(query);
 makeQueryInline(query, queriedContents);
